@@ -115,12 +115,12 @@ end
 
 log "increase limits for the elasticsearch user"
 
-file "/etc/security/limits.d/10-elasticsearch.conf" do
-  content <<-END.gsub(/^    /, '')
-    #{node.elasticsearch.fetch(:user, "elasticsearch")}     -    nofile    #{node.elasticsearch[:limits][:nofile]}
+#file "/etc/security/limits.d/10-elasticsearch.conf" do
+#  content <<-END.gsub(/^    /, '')
+#    #{node.elasticsearch.fetch(:user, "elasticsearch")}     -    nofile    #{node.elasticsearch[:limits][:nofile]}
     #{node.elasticsearch.fetch(:user, "elasticsearch")}     -    memlock   #{node.elasticsearch[:limits][:memlock]}
-  END
-end
+#  END
+#end
 
 # Create file with ES environment variables
 #
